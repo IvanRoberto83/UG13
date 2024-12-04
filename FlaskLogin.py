@@ -4,19 +4,20 @@ app = Flask(__name__)
 
 @app.route("/login", methods=['POST'])  
 def login():
-    pass
+    username = request.form['username']
+    password = request.form['password']
 
-def userLogin(username, password):
-    # Open database connection
-    connection = sqlite3.connect("user.db")
-    cursor = connection.cursor()
-    # Execute the query
-    cursor.execute("SELECT username, password FROM user WHERE username = ? AND password = ?;", 
-                   (username, password))    
-    count = cursor.fetchone()
-    # Close the connection
-    connection.close()
-    return count
+    ListUsername = ['Admin','Ivan','Kenzie']
+    ListPassword = ['qwe123','r0ku83','foca']
+
+    if username == ListUsername[0] and password == ListPassword[0]:
+        return f"Welcome back {username}!"
+    elif username == ListUsername[1] and password == ListPassword[1]:
+        return f"Welcome back {username}!"
+    elif username == ListUsername[2] and password == ListPassword[2]:
+        return f"Welcome back {username}!"
+    else:
+        return "Login Failed! Please check your username & password!"
 
 if __name__ == '__main__':
     print("This is flask Program!")
